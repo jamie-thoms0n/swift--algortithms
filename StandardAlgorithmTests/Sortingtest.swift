@@ -7,14 +7,14 @@
 
 import XCTest
 
-class Sortingtest: XCTestCase {
+class SortingTest: XCTestCase {
 
-    func testBubbleSortWithUnsortedArrayReturnsSortedArray (){
+    func testBubbleSortWithUnsortedArrayReturnsSortedArray() {
         //arrage
         let sorting = Sorting()
         let testCases = [(input: [2,5,6,8,2], expected: [2,2,5,6,8]),
-                         (),
-                         (),]
+                         (input: [2,2,5,6,8], expected: [2,2,5,6,8]),
+                         (input: [2,3,54,52472,25,7343,73], expected: [2,3,25,54,73,7343,52472])]
 
         //act
         //assert
@@ -23,34 +23,19 @@ class Sortingtest: XCTestCase {
             XCTAssertEqual(actual, testCase.expected)
         }
     }
-    func testBubbleSortWithEmptyArrayReturnsEmptyArray(){
-        //arrange
+    
+    func testInsertionSortWithUnsortedArrayReturnsSortedArray() {
+        //arrage
         let sorting = Sorting()
-        let data = [Int]()
-        let expected = [Int]()
+        let testCases = [(input: [2,5,6,8,2], expected: [2,2,5,6,8]),
+                        (input: [2,2,5,6,8], expected: [2,2,5,6,8]),
+                        (input: [2,3,54,52472,25,7343,73], expected: [2,3,25,54,73,7343,52472])]
         //act
-        let actual = sorting.bubbleSort(data)
-        //assert
-        XCTAssertEqual(actual, expected)
-    }
-    func testBubbleSortWithAlreadySortedArrayReturnsSortedArray(){
         //arrange
-        let sorting = Sorting()
-        let data = [2,2,5,6,8]
-        let expected = [2,2,5,6,8]
-        //act
-        let actual = sorting.bubbleSort(data)
-        //assert
-        XCTAssertEqual(actual, expected)
-    }
-    func testBubbleSortWithErroneousDataArrayReturnsError(){
-        //arrange
-        let sorting =  Sorting()
-        let data = ["DGawg","eag","efargawGrwgrawfrgdfgasf"]
-        let expected = [Int]()
-        //act
-        let actual = sorting.bubbleSort(data)
-        //assert
-        XCTAssertEqual(actual,expected)
+        for testCase in testCases {
+            let actual = sorting.insertionSort(testCase.input)
+            XCTestAssertEqual(actual, testCase.expected)
+            
+        }
     }
 }
